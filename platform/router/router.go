@@ -37,10 +37,13 @@ func New(auth *authenticator.Authenticator) *gin.Engine {
 	})
 	router.GET("/login", login.Handler(auth))
 	router.GET("/callback", callback.Handler(auth))
-	router.GET("/user", user.Handler)
+
+	//Tanpa Auth
+	//router.GET("/user", user.Handler)
+
 	router.GET("/logout", logout.Handler)
 
-	// platform/router/router.go
+	//Dengan Auth
 	router.GET("/user", middleware.IsAuthenticated, user.Handler)
 
 	return router
