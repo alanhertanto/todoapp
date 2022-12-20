@@ -9,7 +9,9 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 
+	"todoapp/controllers"
 	"todoapp/platform/authenticator"
 	"todoapp/platform/middleware"
 	"todoapp/web/app/callback"
@@ -40,11 +42,23 @@ func New(auth *authenticator.Authenticator) *gin.Engine {
 
 	//Tanpa Auth
 	//router.GET("/user", user.Handler)
-
-	router.GET("/logout", logout.Handler)
-
 	//Dengan Auth
 	router.GET("/user", middleware.IsAuthenticated, user.Handler)
 
+	router.GET("/logout", logout.Handler)
+
 	return router
+}
+
+func SetupRoutes(db *gorm.DB) *gin.Engine {
+	r := gin.Default()
+	r.Use(func(c *gin.Context) {
+		c.Set("db", db)
+	})
+	r.GET("/posts", controllers.FindBlogPosts)
+	r.POST("/posts", controllers.CreateBlogPost)
+	r.GET("/posts/:id", controllers.FindPost)
+	r.PATCH("/posts/:id", controllers.UpdatePost)
+	r.DELETE("posts/:id", controllers.DeletePost)
+	return r
 }

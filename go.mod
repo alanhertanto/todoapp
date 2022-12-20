@@ -9,6 +9,8 @@ require (
 	github.com/gin-contrib/sessions v0.0.3
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
+	github.com/gorilla/mux v1.8.0 // indirect
+	github.com/jinzhu/gorm v1.9.16
 	github.com/joho/godotenv v1.4.0
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
