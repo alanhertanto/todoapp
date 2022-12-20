@@ -1,0 +1,46 @@
+@host = localhost:3000
+// Create Product
+POST http://{{host}}/api/posts HTTP/1.1
+content-type: application/json
+    
+{
+    "id": 23,
+    "author": "alan",
+    "title": "title1",
+    "description":"description1",
+    "url":"www",
+    "source":"wwww",
+    "image":"wwwimage",
+    "category":"yacategory",
+    "language":"ind",
+    "country":"indo",
+    "published_at":"2020-07-26T01:04:23+00:00"
+}
+###
+// Get Product By ID
+GET http://{{host}}/api/posts/23 HTTP/1.1
+content-type: application/json
+###
+// Get All Products
+GET http://{{host}}/api/posts/ HTTP/1.1
+content-type: application/json
+###
+// Update Product
+PUT http://{{host}}/api/posts/23 HTTP/1.1
+content-type: application/json
+{
+    "id": 23,
+    "author": "alan",
+    "title": "title1",
+    "description":"description1",
+    "url":"www",
+    "source":"wwww",
+    "image":"wwwimage",
+    "category":"yacategory",
+    "language":"ind",
+    "country":"indo",
+    "published_at":"2020-07-26T01:04:23+00:00"}
+###
+// Delete Product
+DELETE http://{{host}}/api/posts/23 HTTP/1.1
+content-type: application/json

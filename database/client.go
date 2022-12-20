@@ -1,7 +1,7 @@
 package database
 
 import (
-	"golang-crud-rest-api/entities"
+	"todoapp/entities"
 	"log"
 
 	"gorm.io/driver/mysql"
@@ -21,6 +21,6 @@ func Connect(connectionString string) {
 }
 
 func Migrate() {
-	Instance.AutoMigrate(&entities.Product{})
+	Instance.AutoMigrate(&entities.Posts{})
 	log.Println("Database Migration Completed...")
 }
